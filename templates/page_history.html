@@ -1,7 +1,8 @@
 {% extends "homepage.html" %}
 
 {% block body %}
-<ul>
+<h1>Page History</h1>
+<ul class="page_hist_list">
 {% for hist in page_histories %}
     <li><a href="/{{page_name}}/history/record?id={{hist.id}}">{{hist.timestamp}}</a></li>
 {% endfor %}

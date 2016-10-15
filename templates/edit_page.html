@@ -2,8 +2,8 @@
 
 {% block body %}
 <h1>{{page_name}}</h1>
-<form action="/{{page_name}}/save" method="post">
-  <textarea name="content" rows="8" cols="40">{{content}}</textarea>
+<form class="edit" action="/{{page_name}}/save" method="post">
+  <textarea name="content">{{content}}</textarea>
   <button type="submit" name="save">Save</button>
 </form>
 

@@ -3,15 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Wiki</title>
+    <link rel="stylesheet" href="/static/main.css">
   </head>
   <body>
-    <form action="/search" method="post">
-      <label for="search">Search</label>
-      <input type="text" name="search">
-      <button type="submit">Submit</button>
-    </form>
-    {% block body %}
-      <h1>What would you like to search for?</h1>
-    {% endblock %}
+    <header class="clear">
+      <div>
+        <p>
+          WikiApp
+        </p>
+      </div>
+      <form action="/search" method="post">
+        <input type="text" name="search" placeholder="search">
+        <button type="submit">Submit</button>
+      </form>
+    </header>
+    <div class="teal-row">
+
+    </div>
+    <div class="container">
+      {% block body %}
+        <h1>What would you like to search for?</h1>
+      {% endblock %}
+    </div>
   </body>
 </html>

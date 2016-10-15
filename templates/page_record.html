@@ -4,14 +4,18 @@
 
 <h1>{{page_name}}</h1>
 
-<p>
-  {{page_record.content}}
-</p>
-<p>
+<div class="content-div">
+  <p>
+    {{page_record.content}}
+  </p>
+</div>
+<div>
   {{page_record.timestamp}}
-</p>
+</div>
 
-<a href="/{{page_name}}/history">View Page History</a>
-<a href="/{{page_name}}">Back to {{page_name}} Main Page</a>
+<div class="links-div">
+  <a href="/{{page_name}}/history">View Page History</a>
+  <a href="/{{page_name}}">Back to {{page_name}} Main Page</a>
+</div>
 
 {% endblock %}

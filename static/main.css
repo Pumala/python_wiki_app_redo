@@ -5,6 +5,9 @@ body {
 p, body {
   margin: 0;
 }
+a {
+  text-decoration: none;
+}
 input, textarea {
   box-sizing: border-box;
 }
@@ -87,13 +90,32 @@ button:hover {
 .links-div, .content-div {
   padding: 1.5em 0;
 }
+.links-div > a {
+  padding: 5px 8px;
+  background-color: #E91E63;
+  color: #f2dedd;
+  transition: .3s;
+}
+.links-div > a:hover {
+  background-color: rgba(233, 30, 99, 0.63);
+  color: #222;
+  transition: .3s;
+}
 .links-div a:nth-of-type(2) {
-  padding-left: 15px;
+  margin-left: 15px;
+}
+.page_hist_list {
+  text-align: left;
 }
 .page_hist_list > li {
   margin: 10px 0;
 }
-
+.page_hist_list a {
+  color: darkslateblue;
+}
+.page_hist_list a:hover {
+  color: mediumslateblue;
+}
 /**********************************
             MEDIA QUERIES
 **********************************/

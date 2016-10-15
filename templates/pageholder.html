@@ -1,0 +1,17 @@
+{% extends 'homepage.html' %}
+
+{% block body %}
+  <h1>Hi, you've come to the {{page_name}} page!</h1>
+  {% if has_content %}
+  <p>
+    {{content | safe }}
+  </p>
+  <a href="/{{page_name}}/edit">Edit Content</a>
+  <a href="/{{page_name}}/history">View Page History</a>
+  {% else %}
+    <p>
+      This page has not been created.
+    </p>
+    <a href="/{{page_name}}/edit">Create New Content</a>
+  {% endif %}
+{% endblock %}

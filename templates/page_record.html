@@ -1,0 +1,17 @@
+{% extends "homepage.html" %}
+
+{% block body %}
+
+<h1>{{page_name}}</h1>
+
+<p>
+  {{page_record.content}}
+</p>
+<p>
+  {{page_record.timestamp}}
+</p>
+
+<a href="/{{page_name}}/history">View Page History</a>
+<a href="/{{page_name}}">Back to {{page_name}} Main Page</a>
+
+{% endblock %}

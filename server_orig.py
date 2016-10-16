@@ -16,7 +16,7 @@ def render_homepage():
 
 @app.route('/<page_name>')
 def render_page_name(page_name):
-    query = db.query("select page_content.content, page.id as page_id, page_content.id as content_id from page, page_content where page.id = page_content.page_id and page.page_name = $1 order by page_content.id desc limit 1", page_name)
+    query = db.query("select page_content.content, page.id as page_id, page_content.id as content_id from page, page_content where page.id = page_content.page_id and page.page_name = '%s' order by page_content.id desc limit 1" % page_name)
     wiki_page = query.namedresult()
     has_content = False
     page_is_taken = False
@@ -42,7 +42,7 @@ def render_page_name(page_name):
 
 @app.route('/<page_name>/edit')
 def render_page_edit(page_name):
-    query = db.query("select page_content.content from page, page_content where page.id = page_content.page_id and page.page_name = $1 order by page_content.id desc limit 1", page_name)
+    query = db.query("select page_content.content from page, page_content where page.id = page_content.page_id and page.page_name = '%s' order by page_content.id desc limit 1" % page_name)
     wiki_page = query.namedresult()
     if len(wiki_page) > 0:
         content = wiki_page[0].content
@@ -59,7 +59,7 @@ def save_page_edit(page_name):
     # grab the new content from the user
     content = request.form.get('content')
     # check if 'page_name' exists in the database
-    query = db.query("select page_content.content, page.id as page_id, page_content.id as content_id from page, page_content where page.id = page_content.page_id and page.page_name = $1 order by page_content.id desc limit 1", page_name)
+    query = db.query("select page_content.content, page.id as page_id, page_content.id as content_id from page, page_content where page.id = page_content.page_id and page.page_name = '%s' order by page_content.id desc limit 1" % page_name)
     result = query.namedresult()
     # if it doesn't exist, create a new page in the database
     if len(result) < 1:
@@ -90,7 +90,7 @@ def redirect_search():
 
 @app.route('/<page_name>/history')
 def view_page_history(page_name):
-    query = db.query("select page_content.timestamp, page_content.id from page, page_content where page.id = page_content.page_id and page.page_name = $1", page_name)
+    query = db.query("select page_content.timestamp, page_content.id from page, page_content where page.id = page_content.page_id and page.page_name = '%s'" % page_name)
     page_histories = query.namedresult()
 
     return render_template(
@@ -102,7 +102,7 @@ def view_page_history(page_name):
 @app.route('/<page_name>/history/record')
 def view_page_record(page_name):
     content_id = request.args.get('id')
-    query = db.query("select page_content.content, page_content.timestamp from page, page_content where page.id = page_content.page_id and page_content.id = $1", content_id)
+    query = db.query("select page_content.content, page_content.timestamp from page, page_content where page.id = page_content.page_id and page_content.id = '%s'" % content_id)
     page_record = query.namedresult()[0]
 
     return render_template(

@@ -72,7 +72,7 @@ def save_page_edit(page_name):
         pass
     # now that we're certain that the page exists in the database, we again grab the query
     # and insert new content in the database
-    query = db.query("select id from page where page_name = '%s'" % page_name)
+    query = db.query("select id from page where page_name = $1", page_name)
     page_id = query.namedresult()[0].id
     db.insert(
         'page_content', {
@@ -81,12 +81,12 @@ def save_page_edit(page_name):
             'timestamp': time.strftime("%Y-%m-%d %H:%M:%S", localtime())
         }
     )
-    return redirect("/%s" % page_name)
+    return redirect("/$1", page_name)
 
 @app.route('/search', methods=['POST'])
 def redirect_search():
     search = request.form.get('search')
-    return redirect('/%s' % search)
+    return redirect('/$1', search)
 
 @app.route('/<page_name>/history')
 def view_page_history(page_name):

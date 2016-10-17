@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, session
 import pg, markdown, time
 from time import strftime, localtime
 from wiki_linkify import wiki_linkify
@@ -9,6 +9,9 @@ db = pg.DB(dbname='wiki_db_redo')
 
 @app.route('/')
 def render_homepage():
+    count = session.get('count', 0)
+    session['count'] = count + 1
+
     return render_template(
         'homepage.html'
     )
@@ -118,6 +121,8 @@ def list_all_pages():
         'all_pages.html',
         all_pages = all_pages
     )
+
+app.secret_key = 'tell your mama that you will be home with bubbly'
 
 if __name__ == '__main__':
     app.run(debug=True)

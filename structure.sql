@@ -10,7 +10,7 @@ CREATE TABLE page_content (
     timestamp timestamp
 );
 
-CREATE TABLE user (
+CREATE TABLE user_auth (
   id serial PRIMARY KEY,
   username varchar UNIQUE,
   password varchar

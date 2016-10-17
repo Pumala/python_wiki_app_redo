@@ -37,7 +37,7 @@
             </ul>
           {% endif %}
         {% endwith %}
-        <h1>Hello, {{session['username'] or 'there'}}!</h1>
+        <h1>Hello {{session['username'] or 'there'}}!</h1>
         <h3>What would you like to search for?</h3>
       {% endblock %}
     </div>

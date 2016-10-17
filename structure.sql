@@ -9,3 +9,9 @@ CREATE TABLE page_content (
     content text,
     timestamp timestamp
 );
+
+CREATE TABLE user (
+  id serial PRIMARY KEY,
+  username varchar UNIQUE,
+  password varchar
+);

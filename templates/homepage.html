@@ -8,9 +8,7 @@
   <body>
     <header class="clear">
       <div>
-        <p>
-          WikiApp
-        </p>
+        <a href="/">WikiApp</a>
       </div>
       <form action="/search" method="post">
         <input type="text" name="search" placeholder="search">
@@ -23,6 +21,9 @@
     <div class="container">
       {% block body %}
         <h1>What would you like to search for?</h1>
+        <div>
+          <a class="block-level" href="/all_pages">View All Pages</a>
+        </div>
       {% endblock %}
     </div>
   </body>

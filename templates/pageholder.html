@@ -3,17 +3,21 @@
 {% block body %}
   <h1>{{page_name}}</h1>
   {% if has_content %}
-    <p>
-      {{content | safe }}
-    </p>
+    <div class="content-div">
+      <p>
+        {{content | safe }}
+      </p>
+    </div>
   <div class="links-div">
     <a href="/{{page_name}}/edit">Edit Content</a>
     <a href="/{{page_name}}/history">View Page History</a>
   </div>
   {% else %}
-    <p>
-      This page has not been created.
-    </p>
-    <a href="/{{page_name}}/edit">Create New Content</a>
+    <div class="content_div">
+      <p>
+        This page has not been created.
+      </p>
+    </div>
+    <a class="block-level" href="/{{page_name}}/edit">Create New Content</a>
   {% endif %}
 {% endblock %}

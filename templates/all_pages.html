@@ -1,0 +1,11 @@
+{% extends "homepage.html" %}
+
+{% block body %}
+<h1>All Pages</h1>
+<ul class="page_hist_list">
+  {% for page in all_pages %}
+  <li><a href="{{page.page_name}}">{{page.page_name}}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

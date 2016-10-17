@@ -10,6 +10,13 @@ db = pg.DB(dbname='wiki_db_redo')
 
 @app.route('/')
 def render_homepage():
+    return redirect('/homepage')
+    # return render_template(
+    #     'homepage.html'
+    # )
+
+@app.route('/homepage')
+def render_homepage():
     return render_template(
         'homepage.html'
     )
@@ -109,6 +116,15 @@ def view_page_record(page_name):
         'page_record.html',
         page_name = page_name,
         page_record = page_record
+    )
+
+@app.route('/all_pages')
+def list_all_pages():
+    query = db.query('select page_name from page')
+    all_pages = query.namedresult()
+    return render_template(
+        'all_pages.html',
+        all_pages = all_pages
     )
 
 if __name__ == '__main__':

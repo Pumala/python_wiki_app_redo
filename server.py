@@ -1,11 +1,21 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 from flask import Flask, flash, render_template, redirect, request, session
 import pg, markdown, time
 from time import strftime, localtime
 from wiki_linkify import wiki_linkify
+import os
 
-app = Flask('WikiApp')
+db = pg.DB(
+    dbname=os.environ.get('PG_DBNAME'),
+    host=os.environ.get('PG_HOST'),
+    user=os.environ.get('PG_USERNAME'),
+    passwd=os.environ.get('PG_PASSWORD')
+)
 
-db = pg.DB(dbname='wiki_db_redo')
+tmp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+app = Flask('Wiki', template_folder=tmp_dir)
 
 @app.route('/')
 def render_homepage():

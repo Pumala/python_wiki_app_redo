@@ -24,9 +24,14 @@ button {
   cursor: pointer;
   transition: .3s;
 }
+.abs_position {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
 .block-level {
-  margin: 1em 0;
   display: block;
+  color: #222;
 }
 /**********************************
             CLEAR FIX
@@ -46,11 +51,14 @@ header {
   line-height: 40px;
 }
 header div {
-  padding: 10px 0 10px 10px;
+  padding: 5px 0;
+}
+header .logo {
+  text-align: center;
 }
 header .logo a {
   font-size: 1.75em;
-  color: #222;
+  color: #fff;
 }
 header form {
   text-align: center;
@@ -73,8 +81,20 @@ button:hover {
   color: #fff;
   transition: 0.3s;
 }
+.user_links {
+  text-align: center;
+}
 .user_links a {
-  
+  text-align: center;
+  color: #fff;
+  transition: 0.3s;
+  margin: 0 1em;
+}
+.user_links a:hover {
+  color: yellow;
+  transition: 0.3s;
+  padding-bottom: 5px;
+  border-bottom: 2px solid yellow;
 }
 /**********************************
                 EDIT
@@ -104,6 +124,7 @@ button:hover {
   width: 100%;
   padding: 1em 0;
   border-radius: 5px;
+  margin-top: -55px;
 }
 .flashes li {
   color: #6048f0;
@@ -121,7 +142,6 @@ button:hover {
 }
 .submit_form label {
   float: left;
-
 }
 .submit_form input {
   margin-top: .5em;
@@ -140,6 +160,7 @@ button:hover {
                 BODY
 **********************************/
 .container {
+  margin: 4em 0;
   padding: 0 10px;
   text-align: center;
 }
@@ -175,11 +196,17 @@ button:hover {
 /**********************************
             MEDIA QUERIES
 **********************************/
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 850px) {
   header {
     padding: 0 10px;
     height: 60px;
     line-height: 60px;
+    position: relative;
+    text-align: center;
+  }
+  header .logo {
+    position: absolute;
+    left: 10px;
   }
   header div {
     display: inline-block;
@@ -187,7 +214,9 @@ button:hover {
   }
   header form {
     background-color: #6048f0;
-    float: right;
+    position: absolute;
+    right: 10px;
+    top: 0;
   }
   .teal-row {
     height: 10px;

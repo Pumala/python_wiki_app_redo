@@ -10,7 +10,7 @@
       <div class="logo">
         <a href="/">WikiApp</a>
       </div>
-      <div class="user_links">
+      <div class="user_links clear">
         {% if session['username'] %}
           <a href="/logout">Logout</a>
         {% else %}
@@ -39,10 +39,10 @@
         {% endwith %}
         <h1>Hello, {{session['username'] or 'there'}}!</h1>
         <h3>What would you like to search for?</h3>
-        <div>
-          <a class="block-level" href="/all_pages">View All Pages</a>
-        </div>
       {% endblock %}
+    </div>
+    <div class="abs_position">
+      <a class="block-level" href="/all_pages">View All Pages</a>
     </div>
   </body>
 </html>

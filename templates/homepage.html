@@ -10,10 +10,13 @@
       <div class="logo">
         <a href="/">WikiApp</a>
       </div>
-      <div class="">
-        <a href="/register">Register</a>
-        <a href="/login">Login</a>
-        <a href="/logout">Logout</a>
+      <div class="user_links">
+        {% if session['username'] %}
+          <a href="/logout">Logout</a>
+        {% else %}
+          <a href="/register">Register</a>
+          <a href="/login">Login</a>
+        {% endif %}
       </div>
       <form action="/search" method="post">
         <input type="text" name="search" placeholder="search">
@@ -25,6 +28,15 @@
     </div>
     <div class="container">
       {% block body %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for message in messages %}
+                <li>{{message}}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
         <h1>Hello, {{session['username'] or 'there'}}!</h1>
         <h3>What would you like to search for?</h3>
         <div>

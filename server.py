@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, flash, render_template, redirect, request, session
 import pg, markdown, time
 from time import strftime, localtime
 from wiki_linkify import wiki_linkify
@@ -44,17 +44,20 @@ def render_page_name(page_name):
 
 @app.route('/<page_name>/edit')
 def render_page_edit(page_name):
-    query = db.query("select page_content.content from page, page_content where page.id = page_content.page_id and page.page_name = $1 order by page_content.id desc limit 1", page_name)
-    wiki_page = query.namedresult()
-    if len(wiki_page) > 0:
-        content = wiki_page[0].content
+    if 'username' in session:
+        query = db.query("select page_content.content from page, page_content where page.id = page_content.page_id and page.page_name = $1 order by page_content.id desc limit 1", page_name)
+        wiki_page = query.namedresult()
+        if len(wiki_page) > 0:
+            content = wiki_page[0].content
+        else:
+            content = ""
+        return render_template(
+            'edit_page.html',
+            page_name = page_name,
+            content = content
+        )
     else:
-        content = ""
-    return render_template(
-        'edit_page.html',
-        page_name = page_name,
-        content = content
-    )
+        return redirect('/%s' % page_name)
 
 @app.route('/<page_name>/save', methods=['POST'])
 def save_page_edit(page_name):
@@ -138,6 +141,8 @@ def submit_new_user_auth():
             'password': password
         }
     )
+    session['username'] = username
+    flash('You have successfully signed up %s!' % username)
     return redirect('/')
 
 @app.route('/login')
@@ -157,6 +162,7 @@ def is_logged_in():
     if len(user_info) > 0:
         if user_info[0].password == password:
             session['username'] = username
+            flash('You have successfully logged in %s!' % username)
             return redirect('/')
     else:
         pass
@@ -164,7 +170,9 @@ def is_logged_in():
 
 @app.route('/logout')
 def logout_user():
+    username = session['username']
     del session['username']
+    flash('You have successfully logged out %s!' % username)
     return redirect('/')
 
 

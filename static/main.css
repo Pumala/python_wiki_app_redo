@@ -5,6 +5,9 @@ body {
 p, body {
   margin: 0;
 }
+ul {
+  list-style: none;
+}
 a {
   text-decoration: none;
 }
@@ -70,6 +73,9 @@ button:hover {
   color: #fff;
   transition: 0.3s;
 }
+.user_links a {
+  
+}
 /**********************************
                 EDIT
 **********************************/
@@ -88,6 +94,20 @@ button:hover {
   padding: 10px 25px;
   margin: 1em auto;
   border-radius: 5px;
+}
+/**********************************
+              FLASHES
+**********************************/
+.flashes {
+  background-color: #c1c0ff;
+  margin-top: 10px;
+  width: 100%;
+  padding: 1em 0;
+  border-radius: 5px;
+}
+.flashes li {
+  color: #6048f0;
+  font-size: 1.2em;
 }
 /**********************************
           LOGIN & REGISTER

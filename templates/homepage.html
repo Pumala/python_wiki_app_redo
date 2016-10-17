@@ -7,8 +7,13 @@
   </head>
   <body>
     <header class="clear">
-      <div>
+      <div class="logo">
         <a href="/">WikiApp</a>
+      </div>
+      <div class="">
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+        <a href="/logout">Logout</a>
       </div>
       <form action="/search" method="post">
         <input type="text" name="search" placeholder="search">
@@ -20,7 +25,8 @@
     </div>
     <div class="container">
       {% block body %}
-        <h1>What would you like to search for?</h1>
+        <h1>Hello, {{session['username'] or 'there'}}!</h1>
+        <h3>What would you like to search for?</h3>
         <div>
           <a class="block-level" href="/all_pages">View All Pages</a>
         </div>

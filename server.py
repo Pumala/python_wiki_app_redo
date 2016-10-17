@@ -122,6 +122,52 @@ def list_all_pages():
         all_pages = all_pages
     )
 
+@app.route('/register')
+def new_register():
+    return render_template(
+        'register.html'
+    )
+
+@app.route('/submit_register_form', methods=['POST'])
+def submit_new_user_auth():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    db.insert(
+        'user_auth', {
+            'username': username,
+            'password': password
+        }
+    )
+    return redirect('/')
+
+@app.route('/login')
+def login_user():
+    return render_template(
+        'login.html'
+    )
+
+@app.route('/submit_login', methods=['POST'])
+def is_logged_in():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    query = db.query("select * from user_auth where username = '%s'" % username)
+    user_info = query.namedresult()
+    print "USER INFO: %r" % user_info
+    if len(user_info) > 0:
+        if user_info[0].password == password:
+            session['username'] = username
+            return redirect('/')
+    else:
+        pass
+    return redirect('/login')
+
+@app.route('/logout')
+def logout_user():
+    del session['username']
+    return redirect('/')
+
+
 app.secret_key = 'tell your mama that you will be home with bubbly'
 
 if __name__ == '__main__':

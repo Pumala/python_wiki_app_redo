@@ -168,16 +168,17 @@ button:hover {
   padding: 1.5em 0;
 }
 .links-div > a {
-  padding: 5px 8px;
-  background-color: #E91E63;
-  color: #f2dedd;
+  padding: 12px 8px;
+  background-color: #6048f0;
+  color: #fff;
   transition: .3s;
   display: block;
-  margin: .5em auto;
+  margin: 1em auto;
   max-width: 150px;
+  border-radius: 6px;
 }
 .links-div > a:hover {
-  background-color: rgba(233, 30, 99, 0.63);
+  background-color: #24bfbf;
   color: #222;
   transition: .3s;
 }
@@ -192,6 +193,15 @@ button:hover {
 }
 .page_hist_list a:hover {
   color: mediumslateblue;
+}
+.create_content a {
+  font-weight: bold;
+  transition: 0.3s;
+}
+.create_content a:hover {
+  font-weight: bold;
+  color: #6048f0;
+  transition: 0.3s;
 }
 /**********************************
             MEDIA QUERIES

@@ -9,7 +9,19 @@
       </p>
     </div>
   <div class="links-div">
+    {% if session['username'] %}
     <a href="/{{page_name}}/edit">Edit Content</a>
+    {% else %}
+    <div class="">
+      <p>
+        Please
+        <a href="/login">login</a>
+        or
+        <a href="/register">register</a>
+        to edit the content.
+      </p>
+    </div>
+    {% endif %}
     <a href="/{{page_name}}/history">View Page History</a>
   </div>
   {% else %}
@@ -18,8 +30,20 @@
         This page has not been created.
       </p>
     </div>
-    <div class="">
+    {% if session['username'] %}
+    <div class="create_content">
       <a class="block-level" href="/{{page_name}}/edit">Create New Content</a>
     </div>
+    {% else %}
+    <div class="">
+      <p>
+        Please
+        <a href="/login">login</a>
+        or
+        <a href="/register">register</a>
+        to create new content.
+      </p>
+    </div>
+    {% endif %}
   {% endif %}
 {% endblock %}

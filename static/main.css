@@ -164,8 +164,12 @@ button:hover {
   padding: 0 10px;
   text-align: center;
 }
-.links-div, .content_div {
+.content-div {
+  padding: 1em 0;
+}
+.links-div {
   padding: 1.5em 0;
+  margin: 2em 0;
 }
 .links-div > a {
   padding: 12px 8px;
@@ -184,14 +188,15 @@ button:hover {
 }
 .page_hist_list {
   text-align: left;
+  list-style: decimal;
 }
 .page_hist_list > li {
   margin: 10px 0;
 }
-.page_hist_list a {
+.page_hist_list a, .login_register a {
   color: darkslateblue;
 }
-.page_hist_list a:hover {
+.page_hist_list a:hover, .login_register a:hover {
   color: mediumslateblue;
 }
 .create_content a {

@@ -12,7 +12,7 @@
     {% if session['username'] %}
     <a href="/{{page_name}}/edit">Edit Content</a>
     {% else %}
-    <div class="">
+    <div class="login_register">
       <p>
         Please
         <a href="/login">login</a>
@@ -25,7 +25,7 @@
     <a href="/{{page_name}}/history">View Page History</a>
   </div>
   {% else %}
-    <div class="content_div">
+    <div class="content-div">
       <p>
         This page has not been created.
       </p>
@@ -35,7 +35,7 @@
       <a class="block-level" href="/{{page_name}}/edit">Create New Content</a>
     </div>
     {% else %}
-    <div class="">
+    <div class="login_register">
       <p>
         Please
         <a href="/login">login</a>

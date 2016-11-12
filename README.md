@@ -1,8 +1,26 @@
 # Wiki App
+_______________
 
-##### *Objective*: Create a 90s style wiki - where any user can edit and create pages
+### Objective:
 
-### Set up Imports
+- create a 90s style wiki - where any user can edit and create pages
+
+### Live Demo
+
+....
+
+### Languages used:
+
+* HTML
+* CSS
+* Python
+* Flask
+
+### Authors:
+
+Carolyn Lam
+
+### Set Up Imports:
 
 ```
 from flask import Flask, render_template, redirect, request

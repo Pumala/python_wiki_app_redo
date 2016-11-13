@@ -3,11 +3,11 @@ _______________
 
 ### Objective:
 
-- create a 90s style wiki - where any user can edit and create pages
+- create a 90s style wiki app where any user can edit and create pages. This was my second time creating a wiki app. The first time I created this app was as a pair programming session with Jesslyn Landgren.
 
 ### Live Demo
 
-....
+[Wiki App] (http://wikiapp.tech/)
 
 ### Languages used:
 
@@ -15,6 +15,9 @@ _______________
 * CSS
 * Python
 * Flask
+* PyGreSQL
+* Jinja
+* PostGreSQL
 
 ### Authors:
 

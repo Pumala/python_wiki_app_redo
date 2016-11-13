@@ -27,6 +27,7 @@
 
     </div>
     <div class="container">
+
       {% block body %}
         {% with messages = get_flashed_messages() %}
           {% if messages %}
@@ -43,15 +44,6 @@
           <a class="block-level" href="/all_pages">View All Pages</a>
         </div>
       {% endblock %}
-    </div>
-
-    <footer>
-      <div class="footer-content">
-        <p>
-          © Copyright 2016 Carolyn Lam
-        </p>
-      </div>
-    </footer>
 
   </body>
 </html>

@@ -87,7 +87,7 @@ def save_page_edit(page_name):
         pass
     # now that we're certain that the page exists in the database, we again grab the query
     # and insert new content in the database
-    query = db.query("select id from page where page_name = '%s'" % page_name)
+    query = db.query("select id from page where page_name = $1", page_name)
     page_id = query.namedresult()[0].id
     db.insert(
         'page_content', {
@@ -166,7 +166,7 @@ def is_logged_in():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    query = db.query("select * from user_auth where username = '%s'" % username)
+    query = db.query("select * from user_auth where username = $1", username)
     user_info = query.namedresult()
     print "USER INFO: %r" % user_info
     if len(user_info) > 0:

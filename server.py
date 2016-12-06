@@ -8,7 +8,7 @@ from wiki_linkify import wiki_linkify
 import os
 
 db = pg.DB(
-    dbname=os.environ.get('PG_DBNAME'),
+    dbname=os.environ.get('PG_DB_NAME'),
     host=os.environ.get('PG_HOST'),
     user=os.environ.get('PG_USERNAME'),
     passwd=os.environ.get('PG_PASSWORD')

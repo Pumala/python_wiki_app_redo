@@ -14,8 +14,8 @@ db = pg.DB(
     passwd=os.environ.get('PG_PASSWORD')
 )
 
-# App Secret key
-app.secret_key = os.environ.get("SECRET_KEY")
+# Secret key
+secret_key = os.environ.get("SECRET_KEY")
 
 tmp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask('Wiki', template_folder=tmp_dir)
